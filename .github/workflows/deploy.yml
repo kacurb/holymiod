@@ -6,7 +6,7 @@ on:
 
 env:
   NODE_VERSION: 20
-  BUILD_DIR: dist   # Vite build trafia do dist/
+  BUILD_DIR: build   # Vite build trafia do dist/
 
 jobs:
   build-and-deploy:
