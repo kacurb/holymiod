@@ -6,7 +6,7 @@ on:
 
 env:
   NODE_VERSION: 20
-  BUILD_DIR: build   # CRA build trafia do build/
+  BUILD_DIR: build   # CRA -> build/
 
 jobs:
   build-and-deploy:
@@ -25,17 +25,17 @@ jobs:
           npm ci
           npm run build
 
-- name: Deploy to FTP (FTPS)
-  uses: SamKirkland/FTP-Deploy-Action@v4
-  with:
-    server: ${{ secrets.FTP_SERVER }}
-    username: ${{ secrets.FTP_USERNAME }}
-    password: ${{ secrets.FTP_PASSWORD }}
-    protocol: ftps
-    port: ${{ secrets.FTP_PORT }}
-    local-dir: ${{ env.BUILD_DIR }}/
-    server-dir: public_html/
-    exclude: |
-      **/.git*
-      **/node_modules/**
-      **/.github/**
+      - name: Deploy to FTP (FTPS)
+        uses: SamKirkland/FTP-Deploy-Action@v4
+        with:
+          server: ${{ secrets.FTP_SERVER }}      # s2.cyber-folks.pl
+          username: ${{ secrets.FTP_USERNAME }}  # admin@holymiod.pl
+          password: ${{ secrets.FTP_PASSWORD }}  # <Twoje nowe hasło>
+          protocol: ftps
+          port: ${{ secrets.FTP_PORT || 21 }}
+          local-dir: ${{ env.BUILD_DIR }}/
+          server-dir: public_html/
+          exclude: |
+            **/.git*
+            **/node_modules/**
+            **/.github/**
