@@ -25,17 +25,20 @@ jobs:
           npm ci
           npm run build
 
-      - name: Deploy to FTP (FTPS)
+
+
+      - name: Deploy to FTP (plain FTP)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_SERVER }}      # s2.cyber-folks.pl
-          username: ${{ secrets.FTP_USERNAME }}  # admin@holymiod.pl
-          password: ${{ secrets.FTP_PASSWORD }}  # <Twoje nowe hasło>
+          server: ${{ secrets.FTP_SERVER }}        # s2.cyber-folks.pl
+          username: ${{ secrets.FTP_USERNAME }}    # admin@holymiod.pl
+          password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftp
           port: ${{ secrets.FTP_PORT || 21 }}
-          local-dir: ${{ env.BUILD_DIR }}/
+          local-dir: ${{ env.BUILD_DIR }}/         # build/
           server-dir: public_html/
           exclude: |
             **/.git*
             **/node_modules/**
             **/.github/**
+
