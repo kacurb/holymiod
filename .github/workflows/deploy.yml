@@ -31,7 +31,7 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}      # s2.cyber-folks.pl
           username: ${{ secrets.FTP_USERNAME }}  # admin@holymiod.pl
           password: ${{ secrets.FTP_PASSWORD }}  # <Twoje nowe hasło>
-          protocol: ftps
+          protocol: ftp
           port: ${{ secrets.FTP_PORT || 21 }}
           local-dir: ${{ env.BUILD_DIR }}/
           server-dir: public_html/
