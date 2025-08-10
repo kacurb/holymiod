@@ -6,7 +6,7 @@ on:
 
 env:
   NODE_VERSION: 20
-  BUILD_DIR: build   # Vite build trafia do dist/
+  BUILD_DIR: build   # CRA build trafia do build/
 
 jobs:
   build-and-deploy:
@@ -32,7 +32,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
-          port: ${{ secrets.FTP_PORT || 21 }}
+          port: ${{ secrets.FTP_PORT }}
           local-dir: ${{ env.BUILD_DIR }}/
           server-dir: public_html/
           exclude: |
